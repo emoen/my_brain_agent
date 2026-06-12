@@ -10,6 +10,48 @@ An LLM-powered personal knowledge base agent, inspired by Andrej Karpathy's appr
 
 ---
 
+## Example: Functional Analysis Knowledge Base
+
+This repo contains a working example built from the graduate textbook *Analysis for Applied Mathematics* (Ward Cheney, GTM 208). The agent ingests the full PDF, detects chapter boundaries, and produces per-chapter wiki articles with theorems, proofs, examples, and exercises — all cross-linked.
+
+### Theorem Dependency Graph
+
+The agent also builds a theorem dependency graph showing how results connect across chapters:
+
+![Theorem dependency graph](functional_analysis/wiki/graphs/theorem_graph.png)
+
+The graph tracks 30 theorems, lemmas, and corollaries across 6 chapters — from normed linear spaces through Hilbert spaces, calculus in Banach spaces, distributions, and Fourier transforms — with edges showing which results depend on or reference others.
+
+### The Topic
+
+**Functional Analysis** is the study of infinite-dimensional vector spaces and the operators acting on them. It underpins modern PDE theory, quantum mechanics, numerical methods, and approximation theory. The textbook covers:
+
+| Chapter | Topic |
+|---------|-------|
+| 1 | Normed Linear Spaces — norms, compactness, Riesz's Lemma |
+| 2 | Hilbert Spaces — inner products, projections, Riesz Representation, Spectral Theorem |
+| 3 | Calculus in Banach Spaces — Fréchet derivatives, chain rule, implicit functions, Newton's method |
+| 4 | Basic Approximation — contraction mappings, projection methods |
+| 5 | Distributions — generalized functions, convolution, fundamental solutions |
+| 6 | Fourier Transform — characters, convolution theorems, decay properties |
+
+### How It's Prompted
+
+The ingestion pipeline uses a two-stage prompting strategy:
+
+**Stage 1 — Chunk summarization:** Each ~3-page chunk of a chapter is processed with a structured prompt that demands:
+- Exact definitions & notation
+- Full theorem statements (hypotheses + conclusions)
+- Proof sketches (only if present in the text)
+- Worked examples & notable exercises
+- Key insights (3–8 bullets)
+
+**Stage 2 — Hierarchical merge:** Chunk summaries are merged with a synthesis prompt that deduplicates, cross-references, and produces a cohesive article with sections for Overview, Definitions, Theorems, Proof Ideas, Examples, Exercises, Key Insights, and `[[Wikilinks]]` for Obsidian graph navigation.
+
+Both prompts enforce strict grounding: the LLM may only use evidence from the source text, never invent theorem names or external facts.
+
+---
+
 ## What This Repo Does
 
 This project implements that pattern:
