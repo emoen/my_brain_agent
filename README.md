@@ -6,13 +6,17 @@
 
 ## Inspiration
 
-<p align="center">
-  <img src="https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg" width="80" style="border-radius:50%;" alt="Andrej Karpathy"/>
-  <br>
-  <strong>Andrej Karpathy</strong>
-</p>
-
+<table>
+<tr>
+<td width="100" valign="top">
+<img src="https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg" width="80" alt="Andrej Karpathy"/>
+<br><strong>Karpathy</strong>
+</td>
+<td>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">LLM Knowledge Bases<br><br>Something I&#39;m finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest. In this way, a large fraction of my recent token throughput is going less into manipulating code, and more into manipulating knowledge (stored as markdown and images).</p>&mdash; Andrej Karpathy (@karpathy) <a href="https://x.com/karpathy/status/2039805659525644595">April 2, 2026</a></blockquote>
+</td>
+</tr>
+</table>
 
 **TLDR from the thread:** Raw data from sources is collected, then compiled by an LLM into a `.md` wiki, then operated on by various CLIs by the LLM to do Q&A and to incrementally enhance the wiki, and all of it viewable in Obsidian. You rarely ever write or edit the wiki manually — it's the domain of the LLM.
 
