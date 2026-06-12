@@ -13,6 +13,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# IDE
+# IDE / editors
 .vscode/
 .idea/
+.obsidian/

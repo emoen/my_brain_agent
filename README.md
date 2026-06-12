@@ -100,6 +100,53 @@ Ch 1: Banach Space (definition)          ← foundational
 
 ---
 
+## 📚 Example: Commutative Algebra (LLM-Enhanced Graph)
+
+A second knowledge base built from *Introduction to Commutative Algebra* (Atiyah & Macdonald). Here the theorem graph is built using **GPT-4o to identify conceptual dependencies** — not just textual citations — producing a much richer connectivity map (148 edges vs ~30 from regex alone).
+
+### 🔗 LLM-Enhanced Theorem Dependency Graph
+
+![Commutative Algebra theorem graph](commutative_algebra/wiki/graphs/theorem_graph_llm.png)
+
+80 theorems across 11 chapters, with edges identified by asking GPT-4o: *"Which earlier results does this theorem directly depend on?"*
+
+**Most depended-on results:**
+| Deps | Result | Role |
+|------|--------|------|
+| 9 | Proposition 6.2 | Chain conditions (ACC/DCC characterizations) |
+| 8 | Proposition 4.1 | Primary decomposition existence |
+| 7 | Proposition 1.8 | Prime ideal containment |
+| 6 | Proposition 6.5 | Noetherian module characterization |
+| 6 | Theorem 7.13 | Noetherian normalization |
+
+### 💬 Example Q&A
+
+> **Prompt:** "How is it that a Dedekind domain can be described so many different ways?"
+
+**Answer:**
+
+A Dedekind domain sits at the intersection of several independent algebraic properties that happen to be equivalent in dimension 1. The knowledge base reveals at least **6 equivalent characterizations** from Chapters 9 and 5:
+
+| # | Characterization | Source |
+|---|-----------------|--------|
+| 1 | Noetherian + integrally closed + every nonzero prime is maximal | Defn (Ch 9) |
+| 2 | Every nonzero fractional ideal is invertible | Theorem 9.8 |
+| 3 | Every nonzero ideal factors uniquely into prime ideals | Corollary 9.4 |
+| 4 | Noetherian domain of dim 1 where every primary ideal is a prime power | Theorem 9.3 |
+| 5 | Noetherian domain of dim 1 where every localization at a nonzero prime is a DVR | Theorem 9.3 |
+| 6 | Integrally closed Noetherian domain where every localization $A_\mathfrak{p}$ is a PID | via Prop 9.2 + Prop 9.7 |
+
+**Why so many descriptions?** Each characterization approaches from a different structural angle:
+- **(1)** is algebraic-geometric: "nice" singularities (integrally closed) + low dimension
+- **(2)** is module-theoretic: ideal invertibility = the ideal group is well-behaved
+- **(3)** is arithmetic: unique factorization, but for ideals instead of elements
+- **(4–5)** are local-to-global: Dedekind = "locally a DVR everywhere"
+- **(6)** is the strongest local statement: locally a PID
+
+The deep reason is that in dimension 1, the Noetherian + integrally closed combination is extremely rigid — it forces all these properties simultaneously. The theorem graph shows this: Theorem 9.8 depends on Theorem 9.3, which depends on Proposition 9.2 (the DVR characterization), which in turn uses Nakayama's Lemma (2.6) and primary decomposition (Ch 4).
+
+---
+
 ## ⚙️ What This Repo Does
 
 This project implements that pattern:
