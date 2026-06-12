@@ -1,8 +1,16 @@
-# my_brain_agent
+# 🧠 my_brain_agent
 
-An LLM-powered personal knowledge base agent, inspired by Andrej Karpathy's approach to using LLMs for building and maintaining structured knowledge.
+> *An LLM-powered personal knowledge base agent — ingest PDFs, compile structured wikis, trace theorem dependencies, all via prompts.*
+
+---
 
 ## Inspiration
+
+<p align="center">
+  <img src="https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg" width="80" style="border-radius:50%;" alt="Andrej Karpathy"/>
+  <br>
+  <strong>Andrej Karpathy</strong>
+</p>
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">LLM Knowledge Bases<br><br>Something I&#39;m finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest. In this way, a large fraction of my recent token throughput is going less into manipulating code, and more into manipulating knowledge (stored as markdown and images).</p>&mdash; Andrej Karpathy (@karpathy) <a href="https://x.com/karpathy/status/2039805659525644595">April 2, 2026</a></blockquote>
 
@@ -10,19 +18,19 @@ An LLM-powered personal knowledge base agent, inspired by Andrej Karpathy's appr
 
 ---
 
-## Example: Functional Analysis Knowledge Base
+## 📚 Example: Functional Analysis Knowledge Base
 
 This repo contains a working example built from the graduate textbook *Analysis for Applied Mathematics* (Ward Cheney, GTM 208). The agent ingests the full PDF, detects chapter boundaries, and produces per-chapter wiki articles with theorems, proofs, examples, and exercises — all cross-linked.
 
-### Theorem Dependency Graph
+### 🔗 Theorem Dependency Graph
 
-The agent also builds a theorem dependency graph showing how results connect across chapters:
+The agent automatically builds a theorem dependency graph showing how results connect across chapters:
 
 ![Theorem dependency graph](functional_analysis/wiki/graphs/theorem_graph.png)
 
 The graph tracks 30 theorems, lemmas, and corollaries across 6 chapters — from normed linear spaces through Hilbert spaces, calculus in Banach spaces, distributions, and Fourier transforms — with edges showing which results depend on or reference others.
 
-### The Topic
+### 📖 The Topic
 
 **Functional Analysis** is the study of infinite-dimensional vector spaces and the operators acting on them. It underpins modern PDE theory, quantum mechanics, numerical methods, and approximation theory. The textbook covers:
 
@@ -35,7 +43,7 @@ The graph tracks 30 theorems, lemmas, and corollaries across 6 chapters — from
 | 5 | Distributions — generalized functions, convolution, fundamental solutions |
 | 6 | Fourier Transform — characters, convolution theorems, decay properties |
 
-### How It's Prompted
+### 🎯 How It's Prompted
 
 The ingestion pipeline uses a two-stage prompting strategy:
 
@@ -50,7 +58,7 @@ The ingestion pipeline uses a two-stage prompting strategy:
 
 Both prompts enforce strict grounding: the LLM may only use evidence from the source text, never invent theorem names or external facts.
 
-### Example Q&A
+### 💬 Example Q&A
 
 > **Prompt:** "Which theorems in Chapter 3 (Banach space calculus) rely on results from Chapter 1 (normed linear spaces)? Trace the dependency chain."
 
@@ -88,7 +96,7 @@ Ch 1: Banach Space (definition)          ← foundational
 
 ---
 
-## What This Repo Does
+## ⚙️ What This Repo Does
 
 This project implements that pattern:
 
@@ -97,7 +105,7 @@ This project implements that pattern:
 3. **View** — The generated wiki is browsable in Obsidian (or on GitHub)
 4. **Enhance** — Tools for building theorem graphs, fixing formatting, and cross-linking content
 
-## Project Structure
+## 🗂 Project Structure
 
 ```
 my_brain_agent/
@@ -119,7 +127,7 @@ my_brain_agent/
 └── .env.example                ← Template for required secrets
 ```
 
-## Setup
+## 🚀 Setup
 
 ```bash
 # Create virtual environment
@@ -135,14 +143,14 @@ cp .env.example .env
 source load_env.sh
 ```
 
-## Required Tokens
+## 🔑 Required Tokens
 
 | Variable | Source |
 |----------|--------|
 | `HF_TOKEN` | [Hugging Face Settings → Tokens](https://huggingface.co/settings/tokens) |
 | `GITHUB_TOKEN` | [GitHub → Developer Settings → Fine-grained PAT](https://github.com/settings/tokens) (needs `models:read` scope) |
 
-## Usage
+## 💻 Usage
 
 ```bash
 source load_env.sh
@@ -159,6 +167,6 @@ cd ..
 python sync_papers.py
 ```
 
-## License
+## 📄 License
 
 Personal project — not yet licensed for redistribution.
