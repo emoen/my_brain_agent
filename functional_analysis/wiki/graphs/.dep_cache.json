@@ -1,0 +1,29 @@
+{
+  "ch01:theorem_1": [],
+  "ch01:corollary_1": [],
+  "ch01:corollary_2": [
+    {
+      "number": "1.2",
+      "reason": "Uses the completeness of finite-dimensional normed linear spaces to argue that every finite-dimensional subspace is closed, as closedness follows from completeness in finite dimensions."
+    }
+  ],
+  "ch01:theorem_5": [],
+  "ch01:lemma_1": [],
+  "ch01:lemma_2": [
+    {
+      "number": "1.1",
+      "reason": "Uses the fact that closed and bounded sets in finite-dimensional spaces are compact to establish compactness of the closed subset."
+    }
+  ],
+  "ch02:theorem_1": [],
+  "ch02:theorem_2": [
+    {
+      "number": "1.1",
+      "reason": "Uses the properties of the norm in inner-product spaces, specifically the Pythagorean theorem and projection arguments, which rely on the Cauchy-Schwarz inequality and the triangle inequality."
+    }
+  ],
+  "ch02:theorem_3": [],
+  "ch02:theorem_4": [],
+  "ch02:theorem_5": [],
+  "ch02:theorem_6": []
+}
