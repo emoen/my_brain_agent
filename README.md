@@ -173,4 +173,4 @@ python sync_papers.py
 
 ## 📄 License
 
-Personal project — not yet licensed for redistribution.
+[MIT License](LICENSE) — do whatever you want with it.
