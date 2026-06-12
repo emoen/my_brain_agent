@@ -30,7 +30,7 @@ from pypdf import PdfReader
 from openai import OpenAI
 
 # ── Config ────────────────────────────────────────────────────────────────────
-TOKEN    = os.environ["GITHUB_TOKEN"]
+TOKEN    = os.environ["GITHUB_MODELS_TOKEN"]
 DEFAULT_MODEL = "gpt-4o"
 FALLBACK_MODEL = "gpt-4o-mini"
 BASE_URL = "https://models.inference.ai.azure.com"

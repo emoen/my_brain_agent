@@ -16,7 +16,7 @@ from openai import OpenAI
 import argparse
 import httpx
 
-TOKEN = os.environ["GITHUB_TOKEN"]
+TOKEN = os.environ["GITHUB_MODELS_TOKEN"]
 
 DEFAULT_CHAT_MODELS = [
     "gpt-4o",

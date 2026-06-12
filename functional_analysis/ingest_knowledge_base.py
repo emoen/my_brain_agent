@@ -28,7 +28,7 @@ from pypdf import PdfReader
 from openai import OpenAI
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
-TOKEN = os.environ["GITHUB_TOKEN"]
+TOKEN = os.environ["GITHUB_MODELS_TOKEN"]
 
 MODEL   = "gpt-4o"
 BASE_URL = "https://models.inference.ai.azure.com"
