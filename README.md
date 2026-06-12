@@ -50,6 +50,42 @@ The ingestion pipeline uses a two-stage prompting strategy:
 
 Both prompts enforce strict grounding: the LLM may only use evidence from the source text, never invent theorem names or external facts.
 
+### Example Q&A
+
+> **Prompt:** "Which theorems in Chapter 3 (Banach space calculus) rely on results from Chapter 1 (normed linear spaces)? Trace the dependency chain."
+
+**Answer:**
+
+The theorem graph shows cross-chapter links, and the deeper chain back to Chapter 1 is structural:
+
+```
+Ch 1: Banach Space (definition)          ← foundational
+  │   completeness of normed spaces
+  │   Cauchy sequences converge
+  │
+  ├──► Ch 3, Theorem 2: Continuity of Differentiable Functions
+  │       Proof uses: triangle inequality (Ch 1 norm axiom)
+  │
+  ├──► Ch 3, Theorem 4: Implicit Function Theorem
+  │       Requires: Y is a *complete* normed space (= Banach space, Ch 1)
+  │       Proof uses: Contraction Mapping Theorem (Ch 4 Thm 1)
+  │         └── which itself requires completeness (Ch 1)
+  │
+  └──► Ch 3, Theorem 5: Newton's Method in Banach Spaces
+          Requires: X, Y are Banach spaces (Ch 1 completeness)
+          Proof: sequence {x_n} shown to be Cauchy → converges by completeness
+          Uses: Contraction Mapping Theorem (Ch 4 Thm 1 ← Ch 1 completeness)
+```
+
+| Ch 3 Result | Ch 1 Dependency | How |
+|---|---|---|
+| **Thm 1** (Uniqueness of Fréchet derivative) | Norm axioms, linearity | Uses linearity of bounded operators on normed spaces |
+| **Thm 2** (Differentiable ⟹ continuous) | Triangle inequality | Proof applies $\|f(x+h) - f(x)\| \leq \|Ah\| + o(\|h\|)$ |
+| **Thm 4** (Implicit Function Theorem) | Banach space completeness | Hypothesis requires $Y$ complete; proof invokes contraction mapping |
+| **Thm 5** (Newton's Method) | Banach space completeness | Convergence proof shows iterates form a Cauchy sequence in a complete space |
+
+**Key insight:** Chapter 3's entire framework is built on **completeness** — the defining property that elevates a normed linear space (Ch 1) to a Banach space. Without it, neither the Implicit Function Theorem nor Newton's Method would have convergence guarantees.
+
 ---
 
 ## What This Repo Does
